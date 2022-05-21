@@ -20,9 +20,8 @@ create table kupac (
 
 create table racun (
     sifra int not null primary key auto_increment,
-    artikl int,
-    narudzba int,
     djelatnik int,
+    broj_racuna varchar(50),
     kupac int
 
     
@@ -31,12 +30,13 @@ create table racun (
      sifra int not null primary key auto_increment,
      kolicina decimal(10),
      artikl int,
-     broj_racuna varchar(50),
      racun int
  );
 create table artikl (
     sifra int not null primary key auto_increment,
-    marka varchar(50),
+    brand varchar(50),
+    kategorija varchar(50),
+    veličina varchar(50),
     cijena decimal(18,2),
     dostupnost boolean
 
@@ -50,20 +50,23 @@ alter table narudzba add foreign key (artikl) references artikl(sifra);
 alter table narudzba add foreign key (racun) references racun(sifra);
 
 
-#insert into artikl (sifra, marka, cijena, dostupnost)
-#	values (null, 'fuji', 7999.99, true);
-#insert into narudzba (sifra, kolicina, artikl, broj_racuna)
-#	values (null, 1, 1, '999lsjjs7788');
-#select *from narudzba;
-#select * from artikl;
-#insert into djelatnik (sifra, ime, prezime)
-#	values (null, 'Tvrtko', 'Biciklović');
-#insert into kupac (sifra, ime, prezime)
-#	values (null, 'Marko', 'Ivšić');
-# insert into racun (sifra, narudzba, djelatnik, kupac)
-# 	values (null, 1, 1, 1);
-# select
-# insert into narudzba (sifra, kolicina, artikl, broj_racuna, racun)
-# 	values(null, 3, 1, 'klsakdjsdkasd', 1);
-# 	
-# select * from narudzba;
+insert into artikl (sifra, brand, cijena, dostupnost)
+	values (null, 'fuji', 7999.99, true);
+
+insert into narudzba (sifra, kolicina, artikl)
+	values (null, 1, 1);
+
+select *from narudzba;
+select * from artikl;
+insert into djelatnik (sifra, ime, prezime)
+	values (null, 'Tvrtko', 'Biciklović');
+insert into kupac (sifra, ime, prezime)
+	values (null, 'Marko', 'Ivšić');
+insert into racun (sifra, djelatnik, kupac, broj_racuna)
+ 	values (null, 1, 1, '0099dkji87d66s7ds');
+ select * from racun;
+ select * from narudzba;
+ insert into narudzba (sifra, kolicina, artikl, racun)
+	values(null, 3, 1, 1);
+	
+ select * from narudzba;
