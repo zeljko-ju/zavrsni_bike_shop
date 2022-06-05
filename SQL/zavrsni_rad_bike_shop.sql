@@ -84,3 +84,25 @@ inner join djelatnik c
 on b.djelatnik = c.sifra
 inner join artikl d 
 on a.artikl =d.sifra; 
+
+
+#dodana view tablica u dijagram 
+create view izdani_racun as
+select a.sifra, a.kolicina, d.brand, d.cijena, a.broj_racuna, c.ime, c.prezime 
+from stavka a inner join racun b
+on a.racun =b.sifra 
+inner join djelatnik c
+on b.djelatnik = c.sifra
+inner join artikl d 
+on a.artikl =d.sifra;
+select * from izdani_racun;
+
+select * from racun;
+
+INSERT INTO racun
+(djelatnik, kupac)
+VALUES(1, 1);
+
+INSERT INTO bike_shop.stavka
+(kolicina, artikl, broj_racuna, racun)
+VALUES(1, 5, 'X0009774R', 2);
