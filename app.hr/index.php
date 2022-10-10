@@ -8,10 +8,13 @@ define('BP_APP', BP . 'app' . DIRECTORY_SEPARATOR);
 
 
 $zaAutoload = [
+    BP_APP . 'core',
     BP_APP . 'contoller',
-    BP_APP . 'model',
-    BP_APP . 'core'
+    BP_APP . 'model'
+   
 ];
+
+$putanje = implode(PATH_SEPARATOR,$zaAutoload);
 
 $putanja = implode(PATH_SEPARATOR,$zaAutoload);
 set_include_path($putanja);
@@ -30,4 +33,4 @@ spl_autoload_register(function($klasa){
      }
  });
  
- //App::start();
+// App::start();

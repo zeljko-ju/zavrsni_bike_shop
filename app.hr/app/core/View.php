@@ -12,13 +12,17 @@ class $view
 
     public function render($phtmlStranica,$parametri=[])
     {
-
-        ob_start();
-        extract($parametri);
-        include_once BP_APP . 'view' . 
-            DIRECTORY_SEPARATOR .  $phtmlStranica .  'phtml';
-            $sadrzaj=ob_get_clean();
-            include_once BP_APP .  'view' . DIRECTORY_SEPARATOR . $this->predlozak . 'phtml';
+        $viewDatoteka = BP_APP . 'view' . 
+        DIRECTORY_SEPARATOR . $phtmlStranica . '.phtml';
+        if(file_exists($viewDatoteka)){
+            ob_start();
+            extract($parametri); 
+            include_once $viewDatoteka;
+            $sadrzaj = ob_get_clean();
+        }else{
+            $sadrzaj = 'View datoteka ne postoji: ' . $viewDatoteka;
+       
     }
-
+    include_once BP_APP . 'view' . 
+    DIRECTORY_SEPARATOR . $this->predlozak . '.phtml';
 }
